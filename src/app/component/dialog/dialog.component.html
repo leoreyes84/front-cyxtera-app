@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Create New Client</h2>
+<mat-dialog-content [formGroup]="form">
+  <div>
+    <span>Name: </span>
+    <mat-form-field>
+      <input matInput type="text" name="name" formControlName="name">
+    </mat-form-field>
+    <div class="form-control-error">
+      <small *ngIf="hasError('name', 'required')">Name is required</small>
+    </div>
+  </div>
+
+  <div>
+    <span>Phone: </span>
+    <mat-form-field>
+      <input matInput type="text" name="phone" formControlName="phone">
+    </mat-form-field>
+    <div class="form-control-error">
+      <small *ngIf="hasError('phone', 'required')">Phone is required</small>
+    </div>
+  </div>
+
+  <div>
+    <span>Email: </span>
+    <mat-form-field>
+      <input matInput type="text" name="email" formControlName="email">
+    </mat-form-field>
+    <div class="form-control-error">
+      <small *ngIf="hasError('email', 'required')">Email is required</small>
+    </div>
+  </div>
+
+  <div>
+    <span>Start date: </span>
+    <mat-form-field>
+        <input matInput [matDatepicker]="startDate" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+    <div class="form-control-error">
+      <small *ngIf="hasError('startDate', 'required')">Start Date is required</small>
+    </div>
+  </div>
+
+  <div>
+    <span>End date: </span>
+    <mat-form-field>
+        <input matInput [matDatepicker]="endDate" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+    <div class="form-control-error">
+      <small *ngIf="hasError('endDate', 'required')">End Date is required</small>
+    </div>
+  </div>
+  <div class="form-control-error">
+    <small *ngIf="error">All fields are required</small>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Ok</button>
+</mat-dialog-actions>
